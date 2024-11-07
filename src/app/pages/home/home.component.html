@@ -1,0 +1,27 @@
+
+    <div class="col-6">
+     <label class="form-label" for="form3Example1c">FROM STATION</label>
+     <select [(ngModel)]="fromStationId" name="fromStationId"  id="" class="form-select">
+        <option value="0">From Station</option>
+        @for (item of stationList; track $index) {
+            <option [value]="item.stationID">{{ item.stationName}}</option>
+        }
+    </select>
+    <label class="form-label" for="form3Example1c">TO STATION</label>
+    <select [(ngModel)]="toStationId" name="toStationId" id="" class="form-select">
+        <option value="0">To Station</option>
+        @for (item of stationList; track $index) {
+            <option [value]="item.stationID">{{ item.stationName}}</option>
+        }
+    </select>
+    </div>
+    <div class="row pt-3">
+        <div class="col-6">
+        <label class="form-label" for="form3Example4c">Date Of Travel</label>
+        <input type="date" [(ngModel)]="dateOfTravel" name="dateOfTravel" class="form-control" /> 
+   </div>
+  </div> 
+  <div class="d-flex justify-content-center mt-4 mx-4 mb-3 mb-lg-4">
+    <button type="button" class="btn btn-primary" (click)="onSearch()">Search</button>
+  </div> 
+   

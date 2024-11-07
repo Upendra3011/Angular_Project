@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/hi/7/7b/Indian_Railways_logo.png?20200523071022" alt="Logo" width="40" height="34" class="d-inline-block align-text-top">
+        INDIAN RAILWAY
+      </a>
+    </div>
+    <div style="width: 40%;">
+      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="#">Trains</a>
+      @if (loggedUser.passengerID == 0){
+        <a class="navbar-brand"(click)="openLogin()">Login</a> 
+        <a class="navbar-brand" (click)="openRegister()">Register</a> 
+      } @else {
+        <a class="navbar-brand">{{loggedUser.phone}}</a> 
+        <a class="navbar-brand" (click)="onLoggOff()">LogOFF</a>
+      }
+    </div>
+  </nav>
+<router-outlet/> 
+<div class="modal" id="registerModel">
+    <div class="modal-dialog">
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <h4 class="modal-title">Regiter</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeRegister()"></button>
+        </div> 
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-6">
+                    <label>First Name</label>
+                    <input type="text" [(ngModel)]="registerObj.firstName" class="form-control" />
+                </div>
+                <div class="col-6">
+                    <label>Last Name</label>
+                    <input type="text" [(ngModel)]="registerObj.lastName" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label>Email</label>
+                    <input type="text"  [(ngModel)]="registerObj.email" class="form-control" />
+                </div>
+                <div class="col-6">
+                    <label>Phone</label>
+                    <input type="text"  [(ngModel)]="registerObj.phone"  class="form-control" />
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-6">
+                    <label>Password</label>
+                    <input type="text"  [(ngModel)]="registerObj.password" class="form-control" />
+                </div>
+            </div>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeRegister()">Close</button>
+          <button type="button" class="btn btn-success" (click)="onRegister()">Register</button>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="loginModel">
+    <div class="modal-dialog">
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <h4 class="modal-title">Login</h4>
+          <button type="button" class="btn-close" (click)="closeRegister()"></button>
+        </div> 
+        <div class="modal-body">
+             <div class="row"> 
+                <div class="col-12">
+                    <label>Phone</label>
+                    <input type="text" [(ngModel)]="loginObj.phone" class="form-control" />
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-12">
+                    <label>Password</label>
+                    <input type="text" [(ngModel)]="loginObj.password" class="form-control" />
+                </div>
+            </div>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closelogin()">Close</button>
+          <button type="button" class="btn btn-success" (click)="onLogin()">Login</button>
+        </div> 
+      </div>
+    </div>
+  </div>
